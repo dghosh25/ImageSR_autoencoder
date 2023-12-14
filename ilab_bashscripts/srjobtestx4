@@ -1,0 +1,19 @@
+#!/bin/bash -l
+#SBATCH --output=logfiletestx4
+
+# Record start time in seconds since the epoch
+start_time=$(date +%s)
+echo "Start time: $(date)"
+
+cd autoencoder
+export PATH="$PATH:/koko/system/anaconda3/bin"
+source activate python310
+python testx4.py
+
+# Record end time in seconds since the epoch
+end_time=$(date +%s)
+echo "End time: $(date)"
+
+# Calculate and print the duration
+duration=$((end_time - start_time))
+echo "Duration: $duration seconds"
